@@ -1,0 +1,19 @@
+# dependencies / build
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# env and hosting
+.env*
+!.env.example
+.vercel
+
+# local tooling
+.claude
+.DS_Store
+
+# internal working documents (not part of the site)
+research/
+SITE-CONTENT.md
