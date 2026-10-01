@@ -3,7 +3,7 @@ import type { Evidence, ResearchArea, Role } from "./types";
 
 /*
  * The Person entity. Everything factual here must trace to sources.ts.
- * Wording rules (see research/dossier.md §0 and §12):
+ * Wording rules (see HANDOFF.md §1):
  *  - The D. Y. Patil directorship is a FORMER role. Never present tense.
  *  - Brookstone is a professional training institute, not degree-awarding.
  *  - No awards, experience-year counts or patent-grant counts on the site.

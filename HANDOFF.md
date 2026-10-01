@@ -14,16 +14,9 @@ Env vars: `NEXT_PUBLIC_SITE_URL` (required at launch; the placeholder is `https:
 
 ---
 
-## 1. Read first: adverse press finding
+## 1. Read first: private handoff note
 
-Research on 2026-09-24 found July 2026 press reports of a police FIR against "Amol Anandrao Gawande, former Director of Dr. D. Y. Patil B-School". The reports allege financial misappropriation; the complainant is that institution. These are **allegations only**: no source reports charges or a conviction. Sources are in `research/dossier.md` §0.
-
-How the build handles it:
-- Nothing about the case appears on the site.
-- The D. Y. Patil directorship is always **former** and in past tense. The institution's own current page confirms he no longer holds the role. The end date (October 2025) is from press only and is not published; the Journey page shows "2019 – former".
-- No awards, experience-year counts or "granted patents" are shown.
-
-**Recommend before launch:** the client, and ideally counsel, review how the D. Y. Patil years are presented (credential strip, author box, About, Journey, and the Education Post media item whose headline calls him Director).
+A separate note on how the former Dr. D. Y. Patil role is worded, and why, is kept **outside this repository** with the research dossier (`research/handoff-private.md`, held by Phoenix Creative). Read it before editing anything about that role. In short for this codebase: the D. Y. Patil directorship is always **former** and in past tense; no end date is published; no awards, experience-year counts or "granted patents" are shown; the client should review the About, Journey and media wording before launch.
 
 ## 2. Evidence system (how "no fake authority" is enforced)
 

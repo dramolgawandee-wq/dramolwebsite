@@ -6,7 +6,7 @@ import type { Source } from "./types";
  * lib/evidence.ts only publishes records with at least one "verified" source.
  * `npm run sources` regenerates CONTENT-SOURCES.md from this file.
  *
- * Research dossier with full notes: research/dossier.md (checked 2026-09-24).
+ * Full research notes are kept outside the repository (checked 2026-09-24).
  */
 const C = "2026-09-24";
 
@@ -30,14 +30,6 @@ export const sources: Source[] = [
     checked: C,
     status: "verified",
     notes: "Establishes the D. Y. Patil role as former. Exact end date not published by the institution.",
-  },
-  {
-    id: "dypbs-end-press",
-    claim: "Directorship ended with resignation in October 2025.",
-    source: "Press reports (July 2026)",
-    checked: C,
-    status: "likely",
-    notes: "Secondary sources only. Do not publish an end date until the client confirms it.",
   },
   {
     id: "brookstone-in",
