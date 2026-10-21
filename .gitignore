@@ -15,7 +15,7 @@ next-env.d.ts
 .DS_Store
 
 # internal working documents (not part of the site)
-research/
+/research/
 SITE-CONTENT.md
 CONTENT-SOURCES.md
 
