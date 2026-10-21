@@ -2,7 +2,8 @@
  * Photography slots. Studio portraits were made on 9 Oct 2026 from the
  * client's nine originals (Downloads/IMG_6679-6687.HEIC): subject cut out
  * on-device with Apple Vision, then relit on a deep-green or pale-mint
- * studio backdrop. The scripts live outside the repo; to swap a photo,
+ * studio backdrop. The hero keeps the original event photo (mirrored in
+ * CSS) at the client's request. The scripts live outside the repo; to swap a photo,
  * replace the file and update width/height here.
  */
 export type ImageSlotDef = {
@@ -17,7 +18,7 @@ export type ImageSlotDef = {
 };
 
 export const images: Record<"hero" | "portrait" | "about" | "research" | "ideas" | "speaking" | "leadership" | "cta", ImageSlotDef> = {
-  hero: { subject: "Studio portrait, standing", ratio: "3 / 4", src: "/photos/hero.jpg", width: 1800, height: 2400, alt: "Dr. Amol Gawande in a light blue blazer, looking to the side, studio portrait" },
+  hero: { subject: "Speaking at an evening event", ratio: "2 / 3", src: "/photos/hero.jpg", width: 1280, height: 1920, alt: "Dr. Amol Gawande speaking into a microphone at an evening event" },
   portrait: { subject: "Studio portrait, facing camera", ratio: "4 / 5", src: "/photos/portrait.jpg", width: 1800, height: 2250, alt: "Dr. Amol Gawande, studio portrait" },
   about: { subject: "Seated studio portrait", ratio: "4 / 5", src: "/photos/about.jpg", width: 1600, height: 2000, alt: "Dr. Amol Gawande seated, smiling at the camera" },
   research: { subject: "Seated, looking away", ratio: "4 / 5", src: "/photos/research.jpg", width: 1600, height: 2000, alt: "Dr. Amol Gawande seated, looking thoughtfully to the side" },
