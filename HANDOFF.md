@@ -10,9 +10,18 @@ npm run start
 npm run sources      # regenerates CONTENT-SOURCES.md from src/content/sources.ts
 ```
 
-Env vars: `NEXT_PUBLIC_SITE_URL` (required at launch; the placeholder is `https://www.amolgawande.com`), `RESEND_API_KEY` + `CONTACT_TO` (+ optional `CONTACT_FROM`) for the contact form. Until those are set the form tells the visitor it is not connected yet.
+**Live:** https://www.dramolgawande.com (Vercel project `dramolwebsite`, repo `dramolgawandee-wq/dramolwebsite`, every push to `main` deploys; apex redirects to www). Env vars: `NEXT_PUBLIC_SITE_URL` (optional; defaults to `https://www.dramolgawande.com` in `src/lib/site.ts`), `RESEND_API_KEY` + `CONTACT_TO` (+ optional `CONTACT_FROM`) for the contact form. Until those are set the form tells the visitor it is not connected yet.
 
 ---
+
+## 0. 21 Oct 2026 release (commit 020e99b)
+
+- Client changes (WhatsApp, 9 Oct): D. Y. Patil directorship removed from the site entirely; Vice President, CEGR Maharashtra added (source `client-cegr-vp`); Brookstone title is "Founder". Harvard/Cambridge paper presentations: client to send details, nothing added yet.
+- Recognition section (`src/content/awards.ts`, homepage `#recognition`): two 2026 awards **to Brookstone Institute of Global Studies**, never presented as personal awards.
+- Studio portraits from nine client HEICs (subject lift with Apple Vision on-device, new backdrops) in `public/photos/` hero, portrait, about, research, leadership, cta.
+- The Times of India, 14 Oct 2026, "Why Gen Z needs a different approach to education": a Spotlight (non-editorial) contributed piece. Always call it a contributed article, never editorial coverage. The site's own Ideas essay shares the title but has different text (no duplicate content).
+- Media items now emit `NewsArticle`/`CreativeWork` JSON-LD on `/media` (`mediaNode` in `lib/schema.ts`).
+- Still open: two press headlines (Education Post, Hindustan Times) name D. Y. Patil in the outlet's own wording; repo is public; contact form needs `RESEND_API_KEY` + `CONTACT_TO`; `@phosphor-icons/react` is installed but `Icons.tsx` still uses hand-drawn paths.
 
 ## 1. Read first: private handoff note
 
