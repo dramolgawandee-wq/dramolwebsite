@@ -1,5 +1,5 @@
 import { knowsAbout, portrait, profiles, roles } from "@/content/person";
-import type { Article, Faq, Publication } from "@/content/types";
+import type { Article, Faq, MediaItem, Publication } from "@/content/types";
 import type { Crumb } from "@/components/Breadcrumbs";
 import { publishable } from "./evidence";
 import { abs, site } from "./site";
@@ -121,6 +121,21 @@ export function articleNode(a: Article) {
     articleSection: a.topics[0],
     image: abs(`/ideas/${a.slug}/opengraph-image`),
     ...(a.references?.length ? { citation: a.references.map((r) => r.url) } : {}),
+  };
+}
+
+/** A piece published by another outlet: authored by the person when bylined, about them when an interview. */
+export function mediaNode(m: MediaItem) {
+  return {
+    "@type": m.type === "Article" ? "NewsArticle" : "CreativeWork",
+    "@id": `${m.url}#work`,
+    headline: m.headline,
+    description: m.description,
+    url: m.url,
+    ...(m.date ? { datePublished: m.date } : {}),
+    publisher: orgNode(m.outlet),
+    ...(m.type === "Article" ? { author: { "@id": PERSON_ID } } : { about: { "@id": PERSON_ID } }),
+    inLanguage: "en",
   };
 }
 

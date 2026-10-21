@@ -4,7 +4,8 @@ import type { Evidence, ResearchArea, Role } from "./types";
 /*
  * The Person entity. Everything factual here must trace to sources.ts.
  * Wording rules (see HANDOFF.md §1):
- *  - The D. Y. Patil directorship is a FORMER role. Never present tense.
+ *  - The Dr. D. Y. Patil B-School directorship is NOT shown anywhere on the site
+ *    (removed at the client's request, 9 Oct 2026). Do not reintroduce it.
  *  - Brookstone is a professional training institute, not degree-awarding.
  *  - No awards, experience-year counts or patent-grant counts on the site.
  */
@@ -12,7 +13,8 @@ import type { Evidence, ResearchArea, Role } from "./types";
 export const roles: Role[] = [
   {
     id: "brookstone",
-    title: "Founder & Director",
+    // Client prefers "Founder" (9 Oct 2026); the source lists "Founder & Director".
+    title: "Founder",
     org: "Brookstone Institute of Global Studies",
     orgUrl: "https://www.brookstone.ae/",
     place: "Dubai",
@@ -33,6 +35,16 @@ export const roles: Role[] = [
     sourceIds: ["aims-board"],
   },
   {
+    id: "cegr",
+    title: "Vice President",
+    org: "CEGR Maharashtra",
+    current: true,
+    when: "Present",
+    kind: "governance",
+    summary: "Vice President of CEGR (Centre for Education Growth and Research) in Maharashtra.",
+    sourceIds: ["client-cegr-vp"],
+  },
+  {
     id: "aims-pune",
     title: "Chairman, Pune Chapter",
     org: "Association of Indian Management Schools (AIMS)",
@@ -40,17 +52,6 @@ export const roles: Role[] = [
     kind: "governance",
     summary: "Led the Pune chapter of AIMS before joining its Executive Board.",
     sourceIds: ["dypbs-bio"],
-  },
-  {
-    id: "dypbs",
-    title: "Director",
-    org: "Dr. D. Y. Patil B-School",
-    place: "Pune",
-    start: "2019-08",
-    kind: "leadership",
-    summary:
-      "Led the business school in Tathawade, Pune. Co-edited the school’s CASEPEDIA case-study series and its international conference proceedings.",
-    sourceIds: ["dypbs-bio", "dypbs-current"],
   },
   {
     id: "gbsrc",
@@ -138,7 +139,7 @@ export const profiles = publishable(allProfiles);
  * About page and Person schema pick it up with no layout change.
  * Example: { src: "/portrait.jpg", alt: "Dr. Amol Gawande", width: 1600, height: 2000 }
  */
-export const portrait: { src: string; alt: string; width: number; height: number } | null = null;
+export const portrait: { src: string; alt: string; width: number; height: number } | null = { src: "/photos/portrait.jpg", alt: "Dr. Amol Gawande", width: 1800, height: 2250 };
 
 export const knowsAbout = [
   "Higher education",
@@ -185,9 +186,9 @@ function role(id: string) {
 /** Credential strip under the hero. Labels and values follow the brief. */
 export function credStrip() {
   const out: { label: string; value: string; href: string }[] = [];
-  if (role("dypbs")) out.push({ label: "Former Director", value: "Dr. D. Y. Patil B-School", href: "/journey" });
-  if (role("brookstone")) out.push({ label: "Founder & Director", value: "Brookstone Institute of Global Studies, Dubai", href: "/about" });
+  if (role("brookstone")) out.push({ label: "Founder", value: "Brookstone Institute of Global Studies, Dubai", href: "/about" });
   if (role("aims-board")) out.push({ label: "Executive Board Member", value: "Association of Indian Management Schools", href: "/journey" });
+  if (role("cegr")) out.push({ label: "Vice President", value: "CEGR Maharashtra", href: "/journey" });
   out.push({ label: "Research", value: "Finance · Management · Technology · Higher Education", href: "/research" });
   return out;
 }
@@ -195,9 +196,9 @@ export function credStrip() {
 export function authorBio() {
   const parts = ["Dr. Amol Gawande is an academic leader, researcher and management educator."];
   const bits: string[] = [];
-  if (role("dypbs")) bits.push("has served as Director of Dr. D. Y. Patil B-School, Pune");
   if (role("aims-board")) bits.push("is an Executive Board Member of the Association of Indian Management Schools (AIMS)");
-  if (role("brookstone")) bits.push("is Founder & Director of Brookstone Institute of Global Studies, Dubai");
+  if (role("cegr")) bits.push("is Vice President of CEGR Maharashtra");
+  if (role("brookstone")) bits.push("is Founder of Brookstone Institute of Global Studies, Dubai");
   if (bits.length) {
     const last = bits.pop();
     parts.push(`He ${bits.length ? bits.join(", ") + ", and " : ""}${last}.`);
@@ -218,10 +219,12 @@ export function credentialGroups() {
   const out: { label: string; items: { title: string; org: string }[] }[] = [];
   const b = role("brookstone");
   if (b) out.push({ label: "Current", items: [{ title: b.title, org: `${b.org}, ${b.place}` }] });
-  const d = role("dypbs");
-  if (d) out.push({ label: "Former", items: [{ title: d.title, org: d.org }] });
+  const gov: { title: string; org: string }[] = [];
   const a = role("aims-board");
-  if (a) out.push({ label: "Academic governance", items: [{ title: a.title, org: "Association of Indian Management Schools" }] });
+  if (a) gov.push({ title: a.title, org: "Association of Indian Management Schools" });
+  const c = role("cegr");
+  if (c) gov.push({ title: c.title, org: c.org });
+  if (gov.length) out.push({ label: "Academic governance", items: gov });
   return out;
 }
 
@@ -263,7 +266,7 @@ export function aboutSections() {
       q: "Where has Dr. Amol Gawande worked?",
       paras: [
         "He began his career in securities markets, as a manager in commodity advisory services at Syscon Securities (2004–2007) and in U.S. equity trading at Capstone Securities Analysis (2009–2010). He moved into academia in 2011 as a lecturer at Siddhant College of Engineering, followed by faculty roles at MITCON Institute of Management, MIT School of Telecom Management and Global Business School and Research Centre, Pune.",
-        'In August 2019 he became Director of Dr. D. Y. Patil B-School, Pune, a role he has since left. He is Founder & Director of Brookstone Institute of Global Studies in Dubai, and serves on the Executive Board of the Association of Indian Management Schools, having previously chaired its Pune chapter. The <a href="/journey">journey page</a> lists each role.',
+        'He is Founder of Brookstone Institute of Global Studies in Dubai and Vice President of CEGR Maharashtra, and serves on the Executive Board of the Association of Indian Management Schools, having previously chaired its Pune chapter. The <a href="/journey">journey page</a> lists each role.',
       ],
     },
     {

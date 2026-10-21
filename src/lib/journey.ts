@@ -8,7 +8,7 @@ export type TimelineEntry = { id: string; year: string; role: string; org: strin
  * Vertical timeline built only from verified roles, newest first. Dates come
  * from sources; where none is published, `when` gives a display label.
  */
-const order = ["brookstone", "aims-board", "aims-pune", "dypbs", "gbsrc", "mit-stm", "mitcon", "siddhant", "capstone", "syscon"];
+const order = ["brookstone", "aims-board", "cegr", "aims-pune", "gbsrc", "mit-stm", "mitcon", "siddhant", "capstone", "syscon"];
 
 export function timeline(): TimelineEntry[] {
   const verified = publishable(roles);
@@ -28,6 +28,6 @@ export function timeline(): TimelineEntry[] {
 
 /** The short homepage version: leadership, governance, the move into academia and the start in markets. */
 export function timelineCompact(): TimelineEntry[] {
-  const keep = new Set(["brookstone", "aims-board", "dypbs", "gbsrc", "siddhant", "syscon"]);
+  const keep = new Set(["brookstone", "aims-board", "cegr", "gbsrc", "siddhant", "syscon"]);
   return timeline().filter((e) => keep.has(e.id));
 }

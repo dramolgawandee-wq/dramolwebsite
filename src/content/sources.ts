@@ -57,6 +57,30 @@ export const sources: Source[] = [
     status: "verified",
   },
   {
+    id: "client-cegr-vp",
+    claim: "Vice President, CEGR (Centre for Education Growth and Research), Maharashtra.",
+    source: "Client confirmation (WhatsApp, 9 Oct 2026)",
+    checked: "2026-10-09",
+    status: "verified",
+    notes: "Confirmed by the client. No public CEGR listing was checked.",
+  },
+  {
+    id: "award-cegr-2026",
+    claim: "CEGR award 'Excellence in International Management Education 2026' to Brookstone Institute of Global Studies, Dubai; 25 Sep 2026, Hotel Eros, New Delhi.",
+    source: "Award plaque and certificate (client-supplied photograph, 9 Oct 2026)",
+    checked: "2026-10-09",
+    status: "verified",
+    notes: "Awarded to the institute, not to Dr. Gawande personally. The plaque names the 26th Rashtriya Shiksha Gaurav Puraskar Ceremony and the certificate the 15th National Education Excellence Conclave, so no event name is published.",
+  },
+  {
+    id: "award-mecaw-2026",
+    claim: "Award of Excellence, 'Excellence in Industry-Integrated Global Education Award', Maharashtra Education & Corporate Awards 2026, presented by Maharashtra Education Think Tank to Brookstone.",
+    source: "Brookstone announcement graphic showing the trophy (client-supplied, 9 Oct 2026)",
+    checked: "2026-10-09",
+    status: "verified",
+    notes: "Awarded to the institute, not to Dr. Gawande personally. No date or venue on the source; only the year is shown.",
+  },
+  {
     id: "aims-board",
     claim: "Executive Board Member, Association of Indian Management Schools (AIMS), West zone, 2026–2027 board.",
     source: "AIMS: Executive Board Members 2026–2027",
@@ -142,6 +166,7 @@ export const sources: Source[] = [
   { id: "in-copyrights", claim: "Twelve Indian copyright registrations (L-numbers, 2021–2022).", source: "Institutional bio", checked: C, status: "likely", notes: "[VERIFY on the Copyright Office e-register]." },
 
   /* ---------- Media ---------- */
+  { id: "m-toi-2026", claim: "Contributed article, The Times of India, 14 Oct 2026.", source: "The Times of India", url: "https://timesofindia.indiatimes.com/business/india-business/why-gen-z-needs-a-different-approach-to-education/articleshow/134934195.cms", checked: "2026-10-21", status: "verified", notes: "Spotlight (non-editorial) piece; credit line reads 'contributed by Dr. Amol Gawande'. Present as a contributed article, never as editorial coverage." },
   { id: "m-ceoinsights-2017", claim: "Bylined article, CEO Insights India.", source: "CEO Insights India", url: "https://www.ceoinsightsindia.com/marketing-leader-talks/why-marketing-is-a-preferred-choice-amongst-graduates-nwid-1704.html", checked: C, status: "verified" },
   { id: "m-elets-2019", claim: "Contributed article, Elets Digital Learning, 18 Oct 2019.", source: "Elets Digital Learning", url: "https://digitallearning.eletsonline.com/2019/10/eight-popular-jobs-that-require-an-mba-degree/", checked: C, status: "verified" },
   { id: "m-dh-2020", claim: "Bylined article, Deccan Herald, 1 Jan 2020.", source: "Deccan Herald", url: "https://www.deccanherald.com/supplements/dh-education/choosing-between-mba-and-pgdm-790506.html", checked: C, status: "verified" },

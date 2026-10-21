@@ -9,7 +9,7 @@ import { pageNode } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 
 const description =
-  "The career of Dr. Amol Gawande: from securities markets to management education in Pune, the directorship of Dr. D. Y. Patil B-School, the AIMS Executive Board and Brookstone Institute of Global Studies, Dubai.";
+  "The career of Dr. Amol Gawande: from securities markets to management education in Pune, the AIMS Executive Board, CEGR Maharashtra and Brookstone Institute of Global Studies, Dubai.";
 
 export const metadata = pageMeta({ title: "Journey", description, path: "/journey" });
 

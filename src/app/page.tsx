@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import Icon from "@/components/Icons";
 import ImageSlot from "@/components/ImageSlot";
 import JsonLd from "@/components/JsonLd";
 import { Curves } from "@/components/PageHead";
 import { articles, explorationAreas } from "@/content/articles";
+import { awards } from "@/content/awards";
 import { about, cta, contactTopics, hero, ideas, leadership, principle, research, speaking, work } from "@/content/home";
 import { ipr } from "@/content/ipr";
 import { media } from "@/content/media";
@@ -54,11 +56,12 @@ export default function Home() {
   const interviews = publishable(media).filter((m) => m.type !== "Article").slice(0, 3);
   const creds = credentialGroups();
   const current = creds.find((g) => g.label === "Current")?.items[0];
-  const gov = creds.find((g) => g.label === "Academic governance")?.items[0];
+  const govs = creds.find((g) => g.label === "Academic governance")?.items ?? [];
+  const recognition = publishable(awards);
   const featured = articles[0];
   const tl = timeline();
-  const lead = ["brookstone", "aims-board", "dypbs"].map((id) => tl.find((e) => e.id === id)).filter((e): e is NonNullable<typeof e> => !!e);
-  const earlier = tl.filter((e) => !["brookstone", "aims-board", "dypbs"].includes(e.id));
+  const lead = ["brookstone", "aims-board", "cegr"].map((id) => tl.find((e) => e.id === id)).filter((e): e is NonNullable<typeof e> => !!e);
+  const earlier = tl.filter((e) => !["brookstone", "aims-board", "cegr"].includes(e.id));
 
   return (
     <>
@@ -88,16 +91,16 @@ export default function Home() {
                   <span><b>{current.title}</b>{current.org}</span>
                 </li>
               )}
-              {gov && (
-                <li>
-                  <span className="stats__icon"><Icon name="users" /></span>
-                  <span><b>{gov.title}</b>{gov.org}</span>
+              {govs.map((g, i) => (
+                <li key={g.org}>
+                  <span className="stats__icon"><Icon name={i ? "cap" : "users"} /></span>
+                  <span><b>{g.title}</b>{g.org}</span>
                 </li>
-              )}
+              ))}
             </ul>
             <div className="actions rv rv--d3">
               <Link href={hero.primary.href} className="btn btn--mint">{hero.primary.label}</Link>
-              <Link href={hero.secondary.href} className="btn btn--outline"><Icon name="play" size={16} />{hero.secondary.label}</Link>
+              <Link href={hero.secondary.href} className="btn btn--outline">{hero.secondary.label}</Link>
             </div>
           </div>
         </div>
@@ -122,11 +125,10 @@ export default function Home() {
               <li><span className="chips__icon"><Icon name="cap" /></span><span>Academic leader<br />& educator</span></li>
               <li><span className="chips__icon"><Icon name="book" /></span><span>Researcher<br />& author</span></li>
               {current && <li><span className="chips__icon"><Icon name="briefcase" /></span><span>{current.title}<br />{current.org.split(",")[0]}</span></li>}
-              {gov && <li><span className="chips__icon"><Icon name="users" /></span><span>{gov.title}<br />{gov.org}</span></li>}
+              {govs.map((g) => <li key={g.org}><span className="chips__icon"><Icon name="users" /></span><span>{g.title}<br />{g.org}</span></li>)}
             </ul>
             <div className="actions rv rv--d3">
-              <Link href="/about" className="btn btn--outline btn--dark-text">Learn more about me</Link>
-              <Link href="/journey" className="arrow">The journey</Link>
+              <Link href="/about" className="btn btn--outline btn--dark-text">Full profile</Link>
             </div>
           </div>
         </div>
@@ -236,6 +238,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 05b Recognition: awards received by the institute he founded */}
+      {recognition.length > 0 && (
+        <section className="section awards tone-dark" aria-labelledby="awards-title" id="recognition">
+          <Curves className="curves--soft" />
+          <div className="wrap">
+            <div className="sh sh--split">
+              <div className="rv">
+                <span className="tag tag--outline">Recognition</span>
+                <h2 id="awards-title">Recognition for <em>the institute he founded</em>.</h2>
+              </div>
+              <p className="sh__aside rv rv--d1">Brookstone Institute of Global Studies, the Dubai institute Dr. Gawande founded, received two awards in 2026 for its work in international and industry-integrated education.</p>
+            </div>
+            <ul className="awards__grid" role="list">
+              {recognition.map((a, i) => (
+                <li key={a.id} className={`award rv rv--d${i}`}>
+                  <figure className="award__img">
+                    <Image src={a.image.src} alt={a.image.alt} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectPosition: a.image.position ?? "center" }} />
+                  </figure>
+                  <div className="award__body">
+                    <div className="award__pills">
+                      <span className="tag tag--mint tag--sm">{a.date ? formatDate(a.date) : a.year}</span>
+                      {a.place && <span className="tag tag--outline tag--sm">{a.place}</span>}
+                    </div>
+                    <h3>{a.title}</h3>
+                    <p className="award__to">Awarded to <b>{a.recipient}</b></p>
+                    <p className="award__by">{a.programme ? `${a.programme}. ` : ""}Presented by {a.presenter}.</p>
+                    {a.citation && <p className="award__cite">{a.citation}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* 06 Intellectual work: soft mint panel */}
       <section className="panel-wrap" aria-labelledby="work-title">
         <div className="panel tone-mint">
@@ -287,7 +324,6 @@ export default function Home() {
       <section className="statement tone-dark" aria-label={principle.label}>
         <Curves className="statement__curves curves--soft" />
         <div className="wrap rv">
-          <span className="tag tag--outline">{principle.label}</span>
           <p className="statement__t"><Statement s={principle.statement} /></p>
           <Link href="/about#approach" className="btn btn--outline">How that shapes the work</Link>
         </div>
@@ -298,7 +334,6 @@ export default function Home() {
         <div className="wrap">
           <div className="sh">
             <div className="rv">
-              <span className="tag tag--mint">Writing</span>
               <h2 id="writing-title">Ideas, <em>in his own words</em>.</h2>
             </div>
             <Link href="/ideas" className="arrow rv">All ideas</Link>
@@ -308,8 +343,8 @@ export default function Home() {
               <article className="mag__feature rv">
                 <Link href={`/ideas/${featured.slug}`} className="mag__img rv rv--img" aria-hidden="true" tabIndex={-1}>
                   <ImageSlot name="ideas" tone="light" sizes="(max-width: 1024px) 100vw, 62vw" />
-                  <span className="tag tag--mint mag__tag">{pillars[featured.pillar].name}</span>
                 </Link>
+                <span className="tag tag--mint mag__tag">{pillars[featured.pillar].name}</span>
                 <h3><Link href={`/ideas/${featured.slug}`}>{featured.title}</Link></h3>
                 <p>{featured.summary}</p>
                 <div className="mag__foot">
@@ -345,7 +380,6 @@ export default function Home() {
         <div className="panel tone-mint">
           <div className="grid press">
             <div className="press__a">
-              <span className="tag tag--dark rv">Media & speaking</span>
               <h2 id="media-title" className="rv"><Statement s={speaking.statement} /></h2>
               <ul className="quotes rv rv--d1" role="list">
                 {interviews.map((m) => (
@@ -380,11 +414,10 @@ export default function Home() {
         <div className="cta__card tone-dark">
           <Curves className="cta__curves" />
           <div className="cta__text rv">
-            <span className="tag tag--outline">Contact</span>
             <h2 id="cta-title"><Statement s={cta.statement} /></h2>
             <p className="body">{cta.support}</p>
             <div className="actions">
-              <Link href="/contact" className="btn btn--mint">Get in touch</Link>
+              <Link href="/contact" className="btn btn--mint">Let’s talk</Link>
               <Link href="/about/speaking" className="btn btn--outline">Speaking and engagement</Link>
             </div>
             <ul className="cta__topics" role="list">

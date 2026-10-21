@@ -18,3 +18,7 @@ next-env.d.ts
 research/
 SITE-CONTENT.md
 CONTENT-SOURCES.md
+
+# PR and social working files (not part of the site)
+instagram/
+linkedin/

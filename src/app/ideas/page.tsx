@@ -49,8 +49,8 @@ export default function Ideas() {
               <article className="mag__feature rv">
                 <Link href={`/ideas/${featured.slug}`} className="mag__img rv rv--img" aria-hidden="true" tabIndex={-1}>
                   <ImageSlot name="ideas" tone="light" sizes="(max-width: 1024px) 100vw, 62vw" />
-                  <span className="tag tag--mint mag__tag">{pillars[featured.pillar].name}</span>
                 </Link>
+                <span className="tag tag--mint mag__tag">{pillars[featured.pillar].name}</span>
                 <h3><Link href={`/ideas/${featured.slug}`}>{featured.title}</Link></h3>
                 <p>{featured.summary}</p>
                 <div className="mag__foot">

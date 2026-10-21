@@ -3,13 +3,24 @@ import type { MediaItem } from "./types";
 /* Only items fetched and confirmed at the original publication. */
 export const media: MediaItem[] = [
   {
+    slug: "times-of-india-gen-z-different-approach-to-education",
+    outlet: "The Times of India",
+    headline: "Why Gen Z needs a different approach to education",
+    date: "2026-10-14",
+    type: "Article",
+    description:
+      "A contributed article on why education for Gen Z has to pair strong academic foundations with the ability to apply knowledge in unfamiliar situations.",
+    url: "https://timesofindia.indiatimes.com/business/india-business/why-gen-z-needs-a-different-approach-to-education/articleshow/134934195.cms",
+    sourceIds: ["m-toi-2026"],
+  },
+  {
     slug: "education-post-interview-2024",
     outlet: "Education Post",
     headline: "Interview with Dr. Amol Gawande, Director at Dr. DY Patil B-School in Pune",
     date: "2024-07-10",
     type: "Interview",
     description:
-      "An interview on NBA accreditation, the Principles for Responsible Management Education (PRME) and student placements, given while he was Director of Dr. D. Y. Patil B-School.",
+      "An interview on NBA accreditation, the Principles for Responsible Management Education (PRME) and student placements.",
     url: "https://educationpost.in/news/in-conversation/interview-with-dr-amol-gawande-director-dr-dy-patil-b-school-pune",
     sourceIds: ["m-edupost-2024"],
   },

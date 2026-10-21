@@ -1,10 +1,10 @@
 /**
- * Site-wide constants. The production domain is not confirmed yet, so it is
- * read from NEXT_PUBLIC_SITE_URL and falls back to a placeholder that must
- * be replaced before launch. Canonicals, sitemap and JSON-LD all derive from it.
+ * Site-wide constants. The production domain is www.dramolgawande.com (apex
+ * redirects to www on Vercel). NEXT_PUBLIC_SITE_URL can override it, e.g. for
+ * previews. Canonicals, sitemap and JSON-LD all derive from it.
  */
 export const site = {
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.amolgawande.com").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.dramolgawande.com").replace(/\/$/, ""),
   name: "Dr. Amol Gawande",
   shortName: "Amol Gawande",
   tagline: "Rethinking education for a world that keeps changing.",

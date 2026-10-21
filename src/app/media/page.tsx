@@ -6,12 +6,12 @@ import PageHead, { SectionHead } from "@/components/PageHead";
 import { speaking } from "@/content/home";
 import { media } from "@/content/media";
 import { publishable } from "@/lib/evidence";
-import { pageNode } from "@/lib/schema";
+import { mediaNode, pageNode } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 import { formatDate } from "@/lib/site";
 
 const description =
-  "Interviews with and articles by Dr. Amol Gawande in Education Post, Deccan Herald, Hindustan Times, Elets Digital Learning and CEO Insights India.";
+  "Interviews with and articles by Dr. Amol Gawande in The Times of India, Education Post, Deccan Herald, Hindustan Times, Elets Digital Learning and CEO Insights India.";
 
 export const metadata = pageMeta({ title: "Media & Conversations", description, path: "/media" });
 
@@ -31,7 +31,7 @@ export default function Media() {
   );
   return (
     <>
-      <JsonLd graph={pageNode({ path: "/media", name: "Media & conversations", description, type: "CollectionPage", crumbs: [{ name: "Media", path: "/media" }] })} />
+      <JsonLd graph={[...pageNode({ path: "/media", name: "Media & conversations", description, type: "CollectionPage", crumbs: [{ name: "Media", path: "/media" }] }), ...items.map(mediaNode)]} />
       <PageHead
         crumbs={[{ name: "Media", path: "/media" }]}
         eyebrow="Media & conversations"

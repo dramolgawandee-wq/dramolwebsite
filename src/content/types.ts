@@ -98,6 +98,21 @@ export interface MediaItem extends Evidence {
   url: string;
 }
 
+/** An award received by an organisation Dr. Gawande founded or leads. Never presented as a personal award. */
+export interface Award extends Evidence {
+  id: string;
+  title: string;
+  recipient: string;
+  presenter: string;
+  /** e.g. "Maharashtra Education & Corporate Awards 2026" */
+  programme?: string;
+  year: number;
+  date?: string;
+  place?: string;
+  citation?: string;
+  image: { src: string; width: number; height: number; alt: string; position?: string };
+}
+
 export interface Engagement extends Evidence {
   id: string;
   event: string;

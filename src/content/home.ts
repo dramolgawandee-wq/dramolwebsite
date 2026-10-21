@@ -17,8 +17,8 @@ export const hero = {
   headline: { before: "Rethinking education ", em: "for a changing world", after: "." },
   support:
     "Academic leader, researcher and management educator working where education, technology, leadership and the future of work meet.",
-  primary: { label: "Explore my work", href: "/about" },
-  secondary: { label: "View research", href: "/research" },
+  primary: { label: "Explore my work", href: "/research" },
+  secondary: { label: "About Dr. Gawande", href: "/about" },
 };
 
 // [AMOL APPROVAL REQUIRED] — About statement and framing. Facts in the body come from verified roles.
@@ -26,14 +26,14 @@ export const about = {
   label: "About",
   statement: { before: "Building stronger connections between education, industry and ", em: "the future of work", after: "." },
   paras: [
-    "Dr. Amol Gawande has spent his career moving between markets, classrooms and institutions: trading US equities before he taught his first class, leading a business school in Pune, and founding a professional training institute in Dubai.",
+    "Dr. Amol Gawande has spent his career moving between markets, classrooms and institutions: trading US equities before he taught his first class, teaching management in Pune’s business schools, and founding a professional training institute in Dubai.",
     "That route shapes how he thinks about education. It should be judged by what people can do when they leave: think clearly about an unfamiliar problem, apply what they know where it counts, and keep learning as their field changes.",
   ],
 };
 
 // [AMOL APPROVAL REQUIRED] — expertise framing. Each area is supported by roles or publications in the content database.
 export const expertise: { n: string; title: string; text: string; href: string }[] = [
-  { n: "01", title: "Academic leadership", text: "Directing a business school, chairing and serving on the boards of academic associations.", href: "/journey" },
+  { n: "01", title: "Academic leadership", text: "Founding a professional training institute, and chairing and serving on the boards of academic associations.", href: "/journey" },
   { n: "02", title: "Higher education quality", text: "Accreditation, academic audit and the quality of business-school research, published in Quality Assurance in Education.", href: "/research/publications?area=Higher%20Education" },
   { n: "03", title: "Finance and financial management", text: "Digital payment systems, GST compliance for small enterprises, and an earlier career in securities markets.", href: "/research/publications?area=Finance" },
   { n: "04", title: "Education innovation", text: "Outcome-based and experiential learning, student engagement, and data-informed support for learners.", href: "/ideas" },
@@ -79,7 +79,7 @@ export const principle = {
 export const leadership = {
   statement: { before: "From markets to classrooms to ", em: "institutions", after: "." },
   support:
-    "A route that began in securities markets, moved through business schools in Pune, and now runs a professional training institute in Dubai alongside a governance role in Indian management education.",
+    "A route that began in securities markets, moved through business schools in Pune, and now runs a professional training institute in Dubai alongside governance roles in Indian education bodies.",
 };
 
 // [AMOL APPROVAL REQUIRED] — intellectual-work framing. Titles, numbers and statuses come from verified records.

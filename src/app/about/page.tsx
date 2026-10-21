@@ -3,6 +3,7 @@ import Icon from "@/components/Icons";
 import JsonLd from "@/components/JsonLd";
 import PageHead from "@/components/PageHead";
 import SubNav from "@/components/SubNav";
+import { awards } from "@/content/awards";
 import { ipr } from "@/content/ipr";
 import { aboutSections, credentialGroups, educationList, researchAreas } from "@/content/person";
 import { publications } from "@/content/publications";
@@ -12,7 +13,7 @@ import { pageNode } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 
 const description =
-  "Dr. Amol Gawande is an academic leader, researcher and management educator: Founder & Director of Brookstone Institute of Global Studies, Dubai, former Director of Dr. D. Y. Patil B-School, Pune, and an Executive Board Member of AIMS.";
+  "Dr. Amol Gawande is an academic leader, researcher and management educator: Founder of Brookstone Institute of Global Studies, Dubai, Executive Board Member of AIMS and Vice President of CEGR Maharashtra.";
 
 export const metadata = pageMeta({ title: "About Dr. Amol Gawande", description, path: "/about", type: "profile" });
 
@@ -20,6 +21,7 @@ export default function About() {
   const groups = credentialGroups();
   const edu = educationList();
   const all = publishable(publications);
+  const recognition = publishable(awards);
   const stats = [
     { n: all.length, label: "Publications on record", href: "/research/publications" },
     { n: all.filter((p) => p.type === "book" || p.type === "edited-book").length, label: "Books, edited volumes and proceedings", href: "/research/books" },
@@ -35,9 +37,9 @@ export default function About() {
       <PageHead
         eyebrow="Dr. Amol Gawande"
         title={<>Academic leader.<br />Researcher.<br /><em>Management educator.</em></>}
-        lede="Founder & Director of Brookstone Institute of Global Studies, Dubai. Executive Board Member of the Association of Indian Management Schools. Former Director of Dr. D. Y. Patil B-School, Pune."
+        lede="Founder of Brookstone Institute of Global Studies, Dubai. Executive Board Member of the Association of Indian Management Schools. Vice President of CEGR Maharashtra."
         aside={<><Link href="/contact" className="btn btn--mint">Get in touch</Link><Link href="/journey" className="btn btn--outline">The journey</Link></>}
-        image="hero"
+        image="portrait"
         imageRatio="4 / 5"
         script="Amol Gawande"
       />
@@ -94,6 +96,15 @@ export default function About() {
                   {edu.map((e) => (
                     <p key={e.title}>{e.title}{e.org && <small>{e.org}</small>}</p>
                   ))}
+                </div>
+              )}
+              {recognition.length > 0 && (
+                <div className="side__card">
+                  <span className="tag tag--dark tag--sm">Recognition</span>
+                  {recognition.map((a) => (
+                    <p key={a.id}>{a.title}<small>Awarded to {a.recipient}, {a.year}</small></p>
+                  ))}
+                  <Link href="/#recognition" className="arrow mt-2">See the awards</Link>
                 </div>
               )}
               <div className="side__card" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
